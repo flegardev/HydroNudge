@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.hydronudge.HydrationTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-11-01T15:07:48.315Z" hostname="TINC" time="0.009">
+  <properties/>
+  <testcase name="autumnDayHas25Hours" classname="app.hydronudge.HydrationTest" time="0.001"/>
+  <testcase name="midnightIsExclusive" classname="app.hydronudge.HydrationTest" time="0.0"/>
+  <testcase name="percentDoesNotHideOverflow" classname="app.hydronudge.HydrationTest" time="0.001"/>
+  <testcase name="timezoneChangesLocalDate" classname="app.hydronudge.HydrationTest" time="0.005"/>
+  <testcase name="allCategoriesAvailable" classname="app.hydronudge.HydrationTest" time="0.001"/>
+  <testcase name="rejectZeroVolume" classname="app.hydronudge.HydrationTest" time="0.001"/>
+  <testcase name="springDayHas23Hours" classname="app.hydronudge.HydrationTest" time="0.0"/>
+  <testcase name="unitConversion" classname="app.hydronudge.HydrationTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

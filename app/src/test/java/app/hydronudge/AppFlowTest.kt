@@ -1,0 +1,46 @@
+package app.hydronudge
+
+import androidx.compose.ui.test.*
+import androidx.compose.ui.test.junit4.v2.createAndroidComposeRule
+import androidx.compose.ui.graphics.asAndroidBitmap
+import app.hydronudge.data.preferences.HydroSettings
+import kotlinx.coroutines.runBlocking
+import org.junit.Rule
+import org.junit.Test
+import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
+import org.robolectric.annotation.Config
+import org.robolectric.annotation.GraphicsMode
+import java.io.File
+
+@RunWith(RobolectricTestRunner::class)
+// Avoid Robolectric #8460: an explicit width qualifier can make Dialog text fields never idle.
+@Config(sdk=[35],application=HydroApplication::class,qualifiers="h891dp-xhdpi")
+@GraphicsMode(GraphicsMode.Mode.NATIVE)
+class AppFlowTest {
+    @get:Rule val compose=createAndroidComposeRule<MainActivity>()
+    private fun screenshot(name: String) {
+        val folder=File("build/screenshots").apply {mkdirs()}
+        File(folder,"$name.png").outputStream().use { compose.onRoot().captureToImage().asAndroidBitmap().compress(android.graphics.Bitmap.CompressFormat.PNG,100,it) }
+    }
+    @Test fun launchLogDrinkChooseMilkAndSwitchToDarkTheme() {
+        val app=compose.activity.application as HydroApplication
+        runBlocking { app.repository.clearAll(); app.preferences.save(HydroSettings()) }
+        compose.waitUntil(20000) { compose.onAllNodesWithText("0% completed").fetchSemanticsNodes().isNotEmpty() }
+        screenshot("dashboard-light-empty")
+        compose.onNodeWithText("+ 250 mL").performScrollTo().performClick()
+        compose.waitUntil(10000) { compose.onAllNodesWithText("10% completed").fetchSemanticsNodes().isNotEmpty() }
+        compose.onNodeWithText("Choose a drink").performScrollTo().performClick()
+        compose.onNodeWithText("Milk").performClick()
+        compose.onNodeWithText("Save drink").performScrollTo().performClick()
+        compose.waitUntil(10000) { compose.onAllNodesWithText("20% completed").fetchSemanticsNodes().isNotEmpty() }
+        compose.onAllNodesWithText("Settings").onLast().performClick()
+        compose.onNode(hasScrollAction()).performScrollToNode(hasText("Dark"))
+        compose.onNodeWithText("Dark").performClick()
+        compose.onNodeWithText("Today").performClick()
+        compose.waitForIdle()
+        compose.onNode(hasScrollAction()).performScrollToIndex(0)
+        screenshot("dashboard-dark-logged")
+        compose.onNodeWithText("20% completed").assertExists()
+    }
+}

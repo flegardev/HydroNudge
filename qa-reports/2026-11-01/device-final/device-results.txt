@@ -1,0 +1,92 @@
+2026-11-01T14:16:30.767924Z PASS app launch, dashboard rendering and baseline total
+2026-11-01T14:16:30.918686Z SCREENSHOT 01-dashboard-light.png (app window)
+2026-11-01T14:16:31.045395Z PASS quick add 150 mL, persisted water and correct daily total
+2026-11-01T14:16:31.170626Z PASS quick add 250 mL, persisted water and correct daily total
+2026-11-01T14:16:31.295329Z PASS quick add 330 mL, persisted water and correct daily total
+2026-11-01T14:16:31.412019Z PASS quick add 500 mL, persisted water and correct daily total
+2026-11-01T14:16:33.324470Z PASS coffee logging
+2026-11-01T14:16:35.039247Z PASS milk logging
+2026-11-01T14:16:36.695303Z PASS protein shake logging
+2026-11-01T14:16:38.434707Z PASS custom drink logging
+2026-11-01T14:16:39.674340Z PASS edit updates saved quantity and total
+2026-11-01T14:16:39.999272Z PASS delete and Undo restore the same entry ID and total
+2026-11-01T14:16:40.234755Z SCREENSHOT 04-history-statistics.png (app window)
+2026-11-01T14:16:40.234913Z PASS history and statistics render stored data
+2026-11-01T14:16:40.915376Z PASS goal change persisted
+2026-11-01T14:16:41.018713Z SCREENSHOT 05-settings.png (app window)
+2026-11-01T14:16:41.578762Z SCREENSHOT 06-dashboard-dark.png (app window)
+2026-11-01T14:16:41.578940Z PASS light/dark theme switching
+2026-11-01T14:16:41.898379Z SCREENSHOT 07-landscape.png (app window)
+2026-11-01T14:16:41.898559Z PASS landscape rotation, total and layout
+2026-11-01T14:16:43.462385Z PASS notification permission and actual status notification posted
+2026-11-01T14:16:43.652717Z PASS notification quick action replay deduplicates into one Room entry
+2026-11-01T14:16:43.662195Z PASS reminder notification channel and renderer post on Samsung; periodic timing not asserted
+2026-11-01T14:16:43.678721Z PASS real-device unique WorkManager reminder enqueued at minimum 15-minute interval
+2026-11-01T14:16:43.751728Z RESTORE notification permission from ADB after instrumentation finishes; revocation can terminate the test process
+2026-11-01T14:16:43.753518Z CLEANUP only known QA entry IDs removed; original preferences restored; existing entries preserved
+2026-11-01T14:17:55.471804Z SCREENSHOT 08-font-150.png (app window)
+2026-11-01T14:17:55.486351Z PASS 150% font scale: dashboard, progress and logging action remain available
+2026-11-01T14:19:42.411691Z SCREENSHOT 10-invalid-quick-amounts.png (app window)
+2026-11-01T14:19:42.419539Z FAIL quick-add validation: Failed to assert the following: (is not enabled)
+Semantics of the node:
+Node #144 at (l=53.0, t=1385.0, r=547.0, b=1490.0)px
+Focused = 'false'
+Role = 'Button'
+Shape = 'RoundedCornerShape(topStart = CornerSize(size = 50.0%), topEnd = CornerSize(size = 50.0%), bottomEnd = CornerSize(size = 50.0%), bottomStart = CornerSize(size = 50.0%))'
+Text = '[Save quick amounts]'
+Actions = [ClearTextSubstitution, GetTextLayoutResult, OnClick, RequestFocus, SetTextSubstitution, ShowTextSubstitution]
+MergeDescendants = 'true'
+Has 18 siblings
+Selector used: (Text + InputText + EditableText contains 'Save quick amounts' (ignoreCase: false))
+
+2026-11-01T14:58:08.478028Z SCREENSHOT 10-invalid-quick-amounts.png (app window)
+2026-11-01T14:58:08.529949Z PASS malformed quick-add input is rejected without silently discarding tokens
+2026-11-01T14:58:09.885478Z PASS app launch, dashboard rendering and baseline total
+2026-11-01T14:58:10.006765Z SCREENSHOT 01-dashboard-light.png (app window)
+2026-11-01T14:58:10.153021Z PASS quick add 150 mL, persisted water and correct daily total
+2026-11-01T14:58:10.300699Z PASS quick add 250 mL, persisted water and correct daily total
+2026-11-01T14:58:10.418093Z PASS quick add 330 mL, persisted water and correct daily total
+2026-11-01T14:58:10.542830Z PASS quick add 500 mL, persisted water and correct daily total
+2026-11-01T14:58:12.388715Z PASS coffee logging
+2026-11-01T14:58:14.036486Z PASS milk logging
+2026-11-01T14:58:15.684393Z PASS protein shake logging
+2026-11-01T14:58:17.365651Z PASS custom drink logging
+2026-11-01T14:58:18.488273Z PASS edit updates saved quantity and total
+2026-11-01T14:58:18.796379Z PASS delete and Undo restore the same entry ID and total
+2026-11-01T14:58:19.027072Z SCREENSHOT 04-history-statistics.png (app window)
+2026-11-01T14:58:19.027249Z PASS history and statistics render stored data
+2026-11-01T14:58:19.677913Z PASS goal change persisted
+2026-11-01T14:58:19.781389Z SCREENSHOT 05-settings.png (app window)
+2026-11-01T14:58:20.293147Z SCREENSHOT 06-dashboard-dark.png (app window)
+2026-11-01T14:58:20.293331Z PASS light/dark theme switching
+2026-11-01T14:58:20.580989Z SCREENSHOT 07-landscape.png (app window)
+2026-11-01T14:58:20.581196Z PASS landscape rotation, total and layout
+2026-11-01T14:58:21.090101Z PASS notification permission and actual status notification posted
+2026-11-01T14:58:21.268580Z PASS notification quick action replay deduplicates into one Room entry
+2026-11-01T14:58:21.274015Z PASS reminder notification channel and renderer post on Samsung; periodic timing not asserted
+2026-11-01T14:58:21.294927Z PASS real-device unique WorkManager reminder enqueued at minimum 15-minute interval
+2026-11-01T14:58:21.399123Z CLEANUP only known QA entry IDs removed; original preferences restored; existing entries preserved
+2026-11-01T14:58:22.931125Z SCREENSHOT 08-font-150.png (app window)
+2026-11-01T14:58:22.959057Z PASS 150% font scale: dashboard, progress and logging action remain available
+2026-11-01T14:58:24.007428Z PASS background-to-foreground transition
+2026-11-01T14:58:24.058254Z RESTORED original system font scale 1.08
+2026-11-01T14:59:13.077598Z PASS restart seed committed to Room; original records unchanged
+2026-11-01T14:59:16.015301Z SCREENSHOT 09-after-process-restart.png (app window)
+2026-11-01T14:59:16.015527Z PASS real app process restart: same Room record ID, volume and daily total retained
+2026-11-01T14:59:16.017212Z CLEANUP only restart seed record removed
+2026-11-01T14:59:19.485466Z PASS Samsung launcher created one new HydroNudge widget instance
+2026-11-01T14:59:43.871684Z CLEANUP only the newly created QA widget removed from Samsung home screen
+2026-11-01T15:04:19.361507Z PASS Samsung launcher created one new HydroNudge widget instance
+2026-11-01T15:04:21.626892Z PASS actual launcher widget quick action wrote exactly one 250 mL Water record to Room without opening the app
+2026-11-01T15:04:22.338392Z SCREENSHOT 11-widget-medium-crop.png (only HydroNudge widget bounds)
+2026-11-01T15:04:23.885293Z CLEANUP only the newly created QA widget removed from Samsung home screen
+2026-11-01T15:11:54.323650Z PASS Samsung launcher created one new HydroNudge widget instance
+2026-11-01T15:11:57.089067Z PASS actual launcher widget quick action wrote exactly one 250 mL Water record to Room without opening the app
+2026-11-01T15:11:57.169255Z SCREENSHOT 11-widget-medium-crop.png (only HydroNudge widget bounds)
+2026-11-01T15:11:58.724402Z CLEANUP only the newly created QA widget removed from Samsung home screen
+2026-11-01T15:12:01.465808Z SCREENSHOT 12-notifications-denied.png (app window)
+2026-11-01T15:12:01.637245Z PASS actual notification denial: blocked explanation, no status notification, app remains usable
+2026-11-01T15:12:03.579909Z PASS native SystemUI Quick Settings tile add/click: configured Water volume persisted once; no other tile activated
+2026-11-01T15:12:03.648197Z CLEANUP original HydroNudge tile presence preserved; only known tile-test entry removed
+2026-11-01T15:16:05.192594Z PASS genuine ReminderWorker executed through Android WorkManager with the app backgrounded and posted its notification; no fake timestamps or modified user records
+2026-11-01T15:16:05.193241Z LIMITATION one-time QA work exercises the actual periodic worker class; periodic/Doze timing is still best effort and not asserted

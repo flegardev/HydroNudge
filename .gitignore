@@ -1,0 +1,22 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# Local diagnostic output
+*.log
+qa-reports/*/logs/
+qa-reports/*/uiautomator-api.jar
+qa-reports/**/*logcat*.txt
+qa-reports/*/host-test-results/binary/

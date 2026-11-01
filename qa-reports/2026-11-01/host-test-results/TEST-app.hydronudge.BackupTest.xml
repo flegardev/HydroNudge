@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.hydronudge.BackupTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-11-01T15:07:39.169Z" hostname="TINC" time="9.015">
+  <properties/>
+  <testcase name="rejectsFractionalVolume" classname="app.hydronudge.BackupTest" time="7.723"/>
+  <testcase name="rejectsUnsupportedSchema" classname="app.hydronudge.BackupTest" time="0.079"/>
+  <testcase name="rejectsDuplicateIds" classname="app.hydronudge.BackupTest" time="0.069"/>
+  <testcase name="roundTripPreservesAllFields" classname="app.hydronudge.BackupTest" time="0.052"/>
+  <testcase name="mergeIsIdempotentAndInvalidImportLeavesDatabaseUntouched" classname="app.hydronudge.BackupTest" time="0.694"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

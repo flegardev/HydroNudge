@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.hydronudge.AppFlowTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-11-01T15:06:49.887Z" hostname="TINC" time="49.26">
+  <properties/>
+  <testcase name="launchLogDrinkChooseMilkAndSwitchToDarkTheme" classname="app.hydronudge.AppFlowTest" time="48.521"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

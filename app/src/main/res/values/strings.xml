@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">HydroNudge</string>
+    <string name="widget_description">Today’s fluid progress. Resize for one-tap drink actions.</string>
+    <string name="tile_name">Log a drink</string>
+    <plurals name="recorded_days">
+        <item quantity="one">%d recorded day</item>
+        <item quantity="other">%d recorded days</item>
+    </plurals>
+    <string name="history_average">Average across %1$s: %2$s</string>
+    <string name="history_goal_days">%1$s met your current goal</string>
+</resources>
