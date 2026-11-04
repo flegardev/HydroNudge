@@ -1,0 +1,25 @@
+HydroNudge is a water-only journal with a calm ocean-blue interface. Log the water you drink and optionally choose a personal goal to see recorded progress throughout the day. HydroNudge does not calculate hydration needs or provide medical advice. For a child, a parent or caregiver should choose any goal with appropriate professional guidance.
+
+Make logging part of your routine
+• Add water with one tap using four configurable quick-add amounts.
+• Enter a custom amount, date and time, with an optional note.
+• Edit or delete entries and undo a deletion.
+• Optionally choose a personal goal and display units in mL or fl oz. A goal is not a recommendation.
+
+See your water history
+View today's water and explore seven-day, thirty-day and calendar-month summaries. See daily totals, averages for recorded days and days reaching your current goal. HydroNudge records what you enter; missing records do not establish how much water you actually drank.
+
+Keep water logging within reach
+Add a home-screen widget to see your total. Wider widget sizes include 250 mL and 500 mL buttons. Add the Log water Quick Settings tile and choose its serving amount. Optional status notifications also offer quick-add actions.
+
+Reminders that fit your day
+Reminders are optional check-ins. Choose intervals, waking hours and notification preferences or pause them at any time. Notifications require your permission on supported Android versions. Delivery is best effort: Android battery settings, Do Not Disturb and device behavior may delay or silence reminders.
+
+Offline and privacy-first
+No account is required. Water records and settings stay in private local app storage. There are no advertisements, subscriptions, purchases or third-party analytics; all implemented features are free to use. HydroNudge does not itself send your records to a server.
+
+Export and import a manual JSON backup using Android's document picker. Exported backups include preserved legacy records but not app preferences. A document provider you select may use cloud storage; protect those files separately. Only water contributes to the app's current totals.
+
+Choose light, dark or system appearance and keep your daily water journal simple.
+
+HydroNudge is not a medical device and does not diagnose, treat, cure, or prevent any medical condition. Consult a healthcare professional for medical advice, diagnosis or treatment, including individual fluid needs or restrictions. Goals are user-configurable; the app does not measure your body's hydration.

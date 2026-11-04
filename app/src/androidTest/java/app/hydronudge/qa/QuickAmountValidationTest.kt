@@ -21,6 +21,7 @@ class QuickAmountValidationTest {
             runBlocking {app.preferences.save(original.copy(unit=VolumeUnit.ML,quickAmounts=listOf(150,250,330,500)))}
             compose.waitUntil(20000) {compose.onAllNodesWithTag("nav:settings").fetchSemanticsNodes().isNotEmpty()}
             compose.onNodeWithTag("nav:settings").performClick()
+            compose.onNodeWithText("Customize quick add").performScrollTo().performClick()
             compose.onNodeWithTag("settings-list").performScrollToNode(hasText("Save quick amounts"))
             compose.onNode(hasSetTextAction() and hasText("150, 250, 330, 500")).performTextReplacement("150, 250, invalid, 330, 500")
             androidx.test.espresso.Espresso.closeSoftKeyboard()

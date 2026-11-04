@@ -1,5 +1,7 @@
 package app.hydronudge.notifications
 
+import androidx.compose.ui.graphics.toArgb
+import app.hydronudge.ui.theme.OceanTokens
 import android.Manifest
 import android.app.*
 import android.content.Context
@@ -30,7 +32,7 @@ class HydroNotifications(private val context: Context) {
     }
     fun remind(settings: HydroSettings, message: String) {
         val id = "reminders-${settings.sound}-${settings.vibration}"
-        channel(id,"Drink reminders (${if(settings.sound) "sound" else "silent"}, ${if(settings.vibration) "vibrate" else "no vibration"})",settings.sound,settings.vibration)
+        channel(id,"Water reminders (${if(settings.sound) "sound" else "silent"}, ${if(settings.vibration) "vibrate" else "no vibration"})",settings.sound,settings.vibration)
         if(!allowed()) return
         try { manager.notify(2,NotificationCompat.Builder(context,id).setSmallIcon(R.drawable.ic_drop).setContentTitle("A little HydroNudge")
             .setContentText(message).setStyle(NotificationCompat.BigTextStyle().bigText(message)).setContentIntent(open()).setAutoCancel(true)
@@ -44,7 +46,7 @@ class HydroNotifications(private val context: Context) {
         channel("hydration-status","Hydration status")
         if(!allowed()) return
         val now = LocalDate.now(); val w = dayWindow(now,ZoneId.systemDefault())
-        val total = app.repository.all().filter { it.timestamp >= w.start && it.timestamp < w.endExclusive }.sumOf { it.amountMl.toLong() }
+        val total = app.repository.all().filter { it.isWater() && it.timestamp >= w.start && it.timestamp < w.endExclusive }.sumOf { it.amountMl.toLong() }
         fun action(ml: Int): PendingIntent {
             val token = UUID.randomUUID().toString()
             val intent = Intent(context,DrinkActionReceiver::class.java).setAction("app.hydronudge.ADD")
@@ -52,12 +54,14 @@ class HydroNotifications(private val context: Context) {
             return PendingIntent.getBroadcast(context,0,intent,PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
         }
         val notification = NotificationCompat.Builder(context,"hydration-status").setSmallIcon(R.drawable.ic_drop)
-            .setContentTitle("HydroNudge · ${settings.unit.format(total)} / ${settings.unit.format(settings.goalMl.toLong())}")
-            .setContentText("${goalPercent(total,settings.goalMl)}% of today’s goal").setContentIntent(open())
+            .setContentTitle(if(settings.goalMl>0) "HydroNudge · ${settings.unit.format(total)} / ${settings.unit.format(settings.goalMl.toLong())}" else "HydroNudge · ${settings.unit.format(total)} recorded")
+            .setContentText(if(settings.goalMl>0) "${goalPercent(total,settings.goalMl)}% of your chosen water goal" else "Your water log")
+            .apply { if(settings.goalMl>0) setProgress(100,goalPercent(total,settings.goalMl).coerceIn(0,100).toInt(),false) }
+            .setColor(OceanTokens.LightBlue.toArgb()).setContentIntent(open())
             .setOnlyAlertOnce(true).setOngoing(true).setSilent(true).setVisibility(NotificationCompat.VISIBILITY_PRIVATE)
             .setDeleteIntent(PendingIntent.getBroadcast(context,99,Intent(context,DrinkActionReceiver::class.java).setAction("app.hydronudge.DISMISS_STATUS"),PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT))
-            .addAction(0,"+ ${settings.unit.format(250)}",action(250))
-            .addAction(0,"+ ${settings.unit.format(500)}",action(500))
+            .addAction(0,"+ ${settings.unit.format(250)} Water",action(250))
+            .addAction(0,"+ ${settings.unit.format(500)} Water",action(500))
             .addAction(0,"Open app",open()).build()
         try { manager.notify(1,notification) } catch (_: SecurityException) { }
     }

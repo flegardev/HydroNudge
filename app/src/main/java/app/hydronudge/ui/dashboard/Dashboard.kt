@@ -10,90 +10,92 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalConfiguration
 import app.hydronudge.data.local.*
 import app.hydronudge.domain.*
 import app.hydronudge.ui.HydroState
-import app.hydronudge.ui.components.ProgressRing
+import app.hydronudge.ui.components.*
+import androidx.compose.runtime.*
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun Dashboard(state: HydroState, quickAdd: (Int)->Unit, addDrink: ()->Unit, edit: (DrinkEntry)->Unit,
-    delete: (DrinkEntry)->Unit, settings: ()->Unit, favorite: (FavoriteDrink)->Unit, removeFavorite: (FavoriteDrink)->Unit, editFavorite: (FavoriteDrink)->Unit) {
-    LazyColumn(modifier=Modifier.testTag("dashboard-list"),contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(20.dp)) {
+    delete: (DrinkEntry)->Unit, settings: ()->Unit, history: ()->Unit) {
+    LazyColumn(modifier=Modifier.testTag("dashboard-list"),contentPadding=PaddingValues(20.dp),verticalArrangement=Arrangement.spacedBy(24.dp)) {
         item {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Column(Modifier.weight(1f)) {
-                    Text("HydroNudge", style = MaterialTheme.typography.headlineMedium)
-                    Text(state.date.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Row(verticalAlignment=Alignment.CenterVertically) {
+                Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(4.dp)) {
+                    Text("HydroNudge",style=MaterialTheme.typography.headlineMedium)
+                    Text(state.date.format(DateTimeFormatter.ofPattern("EEE, MMM d")),style=MaterialTheme.typography.labelSmall,color=MaterialTheme.colorScheme.primary)
                 }
-                TextButton(onClick = settings) { Text("Settings") }
+                IconButton(onClick=settings) { Icon(HydroIcons.Settings,"Settings") }
             }
         }
         item {
-            Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface), modifier = Modifier.fillMaxWidth()) {
-                Column(Modifier.padding(12.dp)) { ProgressRing(state.totalMl, state.settings.goalMl, state.settings.unit); Spacer(Modifier.height(16.dp)) }
+            OceanHeroCard(Modifier.fillMaxWidth()) {
+                Text("TODAY",style=MaterialTheme.typography.labelMedium,color=MaterialTheme.colorScheme.primary)
+                WaterProgressVisualization(state.totalMl,state.settings.goalMl,state.settings.unit)
             }
         }
         item {
-            Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                Text("A little sip goes a long way", style = MaterialTheme.typography.titleLarge)
-                Text("QUICK ADD · WATER", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Column(verticalArrangement=Arrangement.spacedBy(12.dp)) {
+                HydroSectionHeader("Add water")
                 state.settings.quickAmounts.chunked(2).forEach { amounts ->
-                    Row(horizontalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.fillMaxWidth()) {
-                        amounts.forEach { ml -> FilledTonalButton(onClick = { quickAdd(ml) }, modifier = Modifier.weight(1f).heightIn(min = 56.dp).testTag("quick-add:$ml")) {
-                            Text("+ ${state.settings.unit.format(ml.toLong())}")
-                        } }
-                    }
-                }
-                Button(onClick = addDrink, modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp).testTag("choose-drink")) { Text("Choose a drink") }
-            }
-        }
-        if (state.favorites.isNotEmpty()) {
-            item { Text("Your favorites", style = MaterialTheme.typography.titleLarge) }
-            items(state.favorites, key = { "favorite:${it.id}" }) { f ->
-                Card {
-                    Column(Modifier.fillMaxWidth().padding(12.dp)) {
-                        Text(f.name, fontWeight = FontWeight.SemiBold)
-                        FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                            TextButton(onClick = { favorite(f) }) { Text("+ ${state.settings.unit.format(f.amountMl.toLong())}") }
-                            TextButton(onClick = { editFavorite(f) }) { Text("Edit serving") }
-                            TextButton(onClick = { removeFavorite(f) }) { Text("Remove favorite") }
+                    Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(12.dp)) {
+                        amounts.forEach { ml ->
+                            HydroQuickAddButton(state.settings.unit.format(ml.toLong()),{quickAdd(ml)},Modifier.weight(1f).testTag("quick-add:$ml"))
                         }
                     }
                 }
+                OutlinedButton(onClick=addDrink,modifier=Modifier.fillMaxWidth().heightIn(min=52.dp).testTag("choose-drink"),shape=MaterialTheme.shapes.small) {
+                    Icon(HydroIcons.Plus,null,Modifier.size(18.dp)); Spacer(Modifier.width(8.dp)); Text("Custom amount")
+                    Spacer(Modifier.weight(1f)); Icon(HydroIcons.Arrow,null,Modifier.size(18.dp))
+                }
             }
         }
-        item { Text("Recent drinks", style = MaterialTheme.typography.titleLarge) }
-        if (state.today.isEmpty()) item {
-            OutlinedCard(Modifier.fillMaxWidth()) { Column(Modifier.padding(24.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Text("Your day starts with a sip", style = MaterialTheme.typography.titleMedium)
-                Text("Log water, coffee, milk or any prepared drink. Its recorded volume counts toward your fluids.")
-            } }
+        item {
+            Row(Modifier.fillMaxWidth(), verticalAlignment=Alignment.CenterVertically) {
+                Text("Recent", style=MaterialTheme.typography.titleLarge, modifier=Modifier.weight(1f))
+                if (state.today.size > 3) {
+                    TextButton(onClick=history, modifier=Modifier.testTag("view-all-water")) {
+                        Text("View all (${state.today.size})")
+                    }
+                }
+            }
         }
-        items(state.today, key = { it.id }) { DrinkRow(it, state.settings.unit, state.zone, { edit(it) }, { delete(it) }) }
-        item { Text("Stay hydrated. Stay free.\nNo ads. No subscriptions. No tracking.", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant) }
+        if(state.today.isEmpty()) item {
+            androidx.compose.animation.AnimatedVisibility(visible=true,enter=androidx.compose.animation.fadeIn(),exit=androidx.compose.animation.fadeOut()) {
+                HydroEmptyState("No water yet", "Tap an amount to start.")
+            }
+        }
+        items(state.today.take(3),key={it.id}) { HydroActivityRow(it,state.settings.unit,state.zone,{edit(it)},{delete(it)},showDate=false) }
     }
 }
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun DrinkRow(entry: DrinkEntry, unit: VolumeUnit, zone: ZoneId, edit: ()->Unit, delete: ()->Unit) {
-    Card(Modifier.fillMaxWidth().testTag("drink:${entry.id}")) {
+fun HydroActivityRow(entry: DrinkEntry, unit: VolumeUnit, zone: ZoneId, edit: ()->Unit, delete: ()->Unit, showDate: Boolean = true) {
+    var menu by remember { mutableStateOf(false) }
+    Surface(Modifier.fillMaxWidth().testTag("drink:${entry.id}"),shape=MaterialTheme.shapes.small,color=MaterialTheme.colorScheme.surface)  {
         Column(Modifier.padding(16.dp)) {
-            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                Text(DrinkCategory.entries.firstOrNull { it.name == entry.category }?.symbol ?: "✦", style = MaterialTheme.typography.headlineMedium)
-                Column(Modifier.weight(1f)) {
-                    Text(entry.name, style = MaterialTheme.typography.titleMedium)
-                    Text(Instant.ofEpochMilli(entry.timestamp).atZone(zone).format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT)), style = MaterialTheme.typography.bodySmall)
+        Row(verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(12.dp)) {
+            WaterBadge()
+            Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(4.dp)) {
+                Text(unit.format(entry.amountMl.toLong()),style=MaterialTheme.typography.titleMedium)
+                Text(Instant.ofEpochMilli(entry.timestamp).atZone(zone).format(if(showDate) DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT) else DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT)),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+            Box {
+                IconButton(onClick={menu=true},modifier=Modifier.testTag("actions:${entry.id}")) {Icon(HydroIcons.More,"Actions for water")}
+                DropdownMenu(expanded=menu,onDismissRequest={menu=false}) {
+                    DropdownMenuItem(text={Text("Edit water")},onClick={menu=false;edit()},modifier=Modifier.testTag("edit:${entry.id}"))
+                    DropdownMenuItem(text={Text("Delete",color=MaterialTheme.colorScheme.error)},onClick={menu=false;delete()},modifier=Modifier.testTag("delete:${entry.id}"))
                 }
             }
-            Text(unit.format(entry.amountMl.toLong()), style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.primary)
-            if(entry.note.isNotBlank()) Text(entry.note, style = MaterialTheme.typography.bodyMedium)
-            FlowRow { TextButton(onClick = edit,modifier=Modifier.testTag("edit:${entry.id}")) { Text("Edit ${entry.name}") }; TextButton(onClick = delete,modifier=Modifier.testTag("delete:${entry.id}")) { Text("Delete", color = MaterialTheme.colorScheme.error) } }
         }
+        if(entry.note.isNotBlank()) Text(entry.note,style=MaterialTheme.typography.bodyMedium)
+    }
     }
 }

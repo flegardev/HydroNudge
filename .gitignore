@@ -39,3 +39,7 @@ qa-reports/*/logs/
 qa-reports/*/uiautomator-api.jar
 qa-reports/**/*logcat*.txt
 qa-reports/*/host-test-results/binary/
+
+# Local QA evidence may contain device metadata.
+qa-reports/
+work/

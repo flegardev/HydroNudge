@@ -26,9 +26,9 @@ class LocalStorageTest {
         var db = open()
         try {
             var repository = DrinkRepository(db.drinks())
-            val drink = DrinkEntry(id="action",name="Milk",category="MILK",amountMl=250)
+            val drink = DrinkEntry(id="action",name="Water",category="WATER",amountMl=250)
             assertTrue(repository.add(drink)); assertFalse(repository.add(drink))
-            repository.add(drink.copy(id="coffee",name="Coffee",category="COFFEE",amountMl=150))
+            repository.add(drink.copy(id="coffee",name="Water",category="WATER",amountMl=150))
             assertEquals(400,repository.all().sumOf { it.amountMl })
             db.close(); db = open(); repository = DrinkRepository(db.drinks())
             assertEquals(2,repository.all().size)
@@ -47,11 +47,11 @@ class LocalStorageTest {
             assertTrue(HydroPreferences(context).settings.first().statusDismissed)
         } finally { prefs.save(original) }
     }
-    @Test fun allBeverageCategoriesContributeTheirSelectedVolume() = runBlocking {
+    @Test fun legacyCategoriesRemainInStorage() = runBlocking {
         val db=Room.inMemoryDatabaseBuilder(RuntimeEnvironment.getApplication(),HydroDatabase::class.java).build()
         try {
             val repository=DrinkRepository(db.drinks())
-            DrinkCategory.entries.forEach { category -> repository.add(DrinkEntry(name=category.label,category=category.name,amountMl=100)) }
+            DrinkCategory.entries.forEach { category -> repository.merge(DrinkBackup(listOf(DrinkEntry(name=category.label,category=category.name,amountMl=100)),emptyList())) }
             assertEquals(12,repository.all().size)
             assertEquals(1200,repository.all().sumOf {it.amountMl})
         } finally { db.close() }

@@ -1,0 +1,28 @@
+{
+  "synthetic": true,
+  "category": "WATER only",
+  "period": "2026-10-27 through2026-11-02",
+  "prior_daily_totals_ml": [
+    1800,
+    2250,
+    2000,
+    2500,
+    1750,
+    2250
+  ],
+  "today_staged_servings_ml": [
+    350,
+    400,
+    500
+  ],
+  "actual_quick_add_ml": 250,
+  "today_before_after_ml": [
+    1250,
+    1500
+  ],
+  "goal_ml": 2500,
+  "history_total_after_ml": 14050,
+  "custom_editor_ml": 375,
+  "custom_editor_saved": false,
+  "private_notes_used": false
+}

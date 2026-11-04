@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">HydroNudge</string>
-    <string name="widget_description">Today’s fluid progress. Resize for one-tap drink actions.</string>
-    <string name="tile_name">Log a drink</string>
+    <string name="widget_description">Today’s water progress. Resize for one-tap water actions.</string>
+    <string name="tile_name">Log water</string>
     <plurals name="recorded_days">
         <item quantity="one">%d recorded day</item>
         <item quantity="other">%d recorded days</item>

@@ -37,6 +37,7 @@ class SystemIntegrationTest {
             val deny=device.wait(Until.findObject(By.res(Pattern.compile(".*:id/permission_deny_button"))),5000)
             check(deny!=null && device.hasObject(By.text(Pattern.compile(".*HydroNudge.*",Pattern.DOTALL)))) {"HydroNudge notification permission dialog unavailable; no unrelated permission was changed"}
             deny.click()
+            check(device.wait(Until.hasObject(By.pkg(app.packageName)),10000))
             compose.waitForIdle()
             compose.onNodeWithTag("settings-list").performScrollToNode(hasText("Notifications are blocked.",substring=true))
             compose.onNodeWithText("Notifications are blocked.",substring=true).assertIsDisplayed()
@@ -46,6 +47,31 @@ class SystemIntegrationTest {
             compose.onNodeWithTag("nav:today").performClick()
             compose.onNodeWithTag("dashboard-list").assertExists()
             QaArtifacts.note("PASS actual notification denial: blocked explanation, no status notification, app remains usable")
+        } finally {runBlocking {app.preferences.save(original)};QaArtifacts.logcat("notification-denial")}
+    }
+
+    @Test @SdkSuppress(minSdkVersion=33)
+    fun notificationAllowPostsAndShowsSystemPrompt() {
+        val original=runBlocking {app.preferences.settings.first()}
+        assertNotEquals(PackageManager.PERMISSION_GRANTED,app.checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS))
+        try {
+            runBlocking {app.preferences.save(original.copy(statusNotification=false))}
+            compose.waitUntil(20000) {compose.onAllNodesWithTag("nav:settings").fetchSemanticsNodes().isNotEmpty()}
+            compose.onNodeWithTag("nav:settings").performClick()
+            compose.onNodeWithTag("settings-list").performScrollToNode(hasTestTag("toggle:Hydration status notification"))
+            compose.onNodeWithTag("toggle:Hydration status notification").performClick()
+            val device=UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
+            check(device.takeScreenshot(java.io.File(QaArtifacts.folder,"permission-prompt.png")))
+            val deny=device.wait(Until.findObject(By.res(Pattern.compile(".*:id/permission_allow_button"))),5000)
+            check(deny!=null && device.hasObject(By.text(Pattern.compile(".*HydroNudge.*",Pattern.DOTALL)))) {"HydroNudge notification permission dialog unavailable; no unrelated permission was changed"}
+            deny.click()
+            check(device.wait(Until.hasObject(By.pkg(app.packageName)),10000))
+            compose.waitForIdle()
+            compose.waitUntil(20000) {app.checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)==PackageManager.PERMISSION_GRANTED && app.getSystemService(NotificationManager::class.java).activeNotifications.any {it.id==1}}
+            QaArtifacts.screenshot(compose.activity,"notifications-allowed")
+            compose.onNodeWithTag("nav:today").performClick()
+            compose.onNodeWithTag("dashboard-list").assertExists()
+            QaArtifacts.note("PASS actual Android permission Allow: permission granted and real status notification posted")
         } finally {runBlocking {app.preferences.save(original)};QaArtifacts.logcat("notification-denial")}
     }
 

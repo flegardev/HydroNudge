@@ -29,3 +29,6 @@ fun dayWindow(date: LocalDate, zone: ZoneId): DayWindow = DayWindow(
 fun localDay(epochMillis: Long, zone: ZoneId): LocalDate = Instant.ofEpochMilli(epochMillis).atZone(zone).toLocalDate()
 fun goalPercent(totalMl: Long, goalMl: Int): Long = if (goalMl > 0) (totalMl * 100L / goalMl) else 0
 fun validateVolume(ml: Int) { require(ml in 1..20000) { "Enter a volume between 1 and 20,000 mL." } }
+
+/** Exact legacy identifier: unknown categories never become water. */
+fun app.hydronudge.data.local.DrinkEntry.isWater(): Boolean = category == "WATER"

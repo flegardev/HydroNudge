@@ -32,7 +32,7 @@ class ReminderDeliveryTest {
         val settings=original.copy(reminders=true,intervalMinutes=15,wakeMinute=0,sleepMinute=0,skipAtGoal=false,pausedUntil=0)
         val now=ZonedDateTime.now()
         val entries=runBlocking {app.repository.all()}
-        val total=entries.filter {localDay(it.timestamp,now.zone)==now.toLocalDate()}.sumOf {it.amountMl.toLong()}
+        val total=entries.filter {it.isWater() && localDay(it.timestamp,now.zone)==now.toLocalDate()}.sumOf {it.amountMl.toLong()}
         val last=entries.filter {it.timestamp<=now.toInstant().toEpochMilli()}.maxOfOrNull {it.timestamp}
         assumeTrue("Recent real drinks suppress reminders; never alter user records to force eligibility",ReminderPolicy.shouldRemind(settings,now,total,last))
         val automation=InstrumentationRegistry.getInstrumentation().uiAutomation

@@ -23,7 +23,7 @@ data class HydroState(
     val zone: ZoneId = ZoneId.systemDefault(),
     val ready: Boolean = false
 ) {
-    val today: List<DrinkEntry> get() { val w = dayWindow(date, zone); return entries.filter { it.timestamp >= w.start && it.timestamp < w.endExclusive } }
+    val today: List<DrinkEntry> get() { val w = dayWindow(date, zone); return entries.filter { it.isWater() && it.timestamp >= w.start && it.timestamp < w.endExclusive } }
     val totalMl get() = today.sumOf { it.amountMl.toLong() }
 }
 data class Feedback(val message: String, val undoEntry: DrinkEntry? = null, val undoDeletes: Boolean = false)
@@ -40,19 +40,17 @@ class HydroViewModel(application: Application) : AndroidViewModel(application) {
     private val events = Channel<Feedback>(Channel.UNLIMITED)
     val feedback = events.receiveAsFlow()
     val state = combine(app.repository.entries, app.repository.favorites, app.preferences.settings, clock) { entries, favorites, settings, now ->
-        HydroState(entries, favorites, settings, now.first, now.second, true)
+        HydroState(entries.filter { it.isWater() }, emptyList(), settings, now.first, now.second, true)
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), HydroState())
 
     fun quickAdd(ml: Int) = save(DrinkEntry(name = "Water", category = DrinkCategory.WATER.name, amountMl = ml))
     fun save(entry: DrinkEntry, editing: Boolean = false) = perform {
         if (editing) app.repository.edit(entry) else app.repository.add(entry)
-        events.send(Feedback(if (editing) "Drink updated" else "Drink added", if (editing) null else entry))
+        events.send(Feedback(if (editing) "Water updated" else "Water added", if (editing) null else entry))
     }
-    fun delete(entry: DrinkEntry) = perform { app.repository.delete(entry.id); events.send(Feedback("Drink deleted", entry, true)) }
+    fun delete(entry: DrinkEntry) = perform { app.repository.delete(entry.id); events.send(Feedback("Water deleted", entry, true)) }
     fun undo(event: Feedback) = perform { event.undoEntry?.let { if (event.undoDeletes) app.repository.restore(it) else app.repository.delete(it.id) } }
     fun saveSettings(settings: HydroSettings) = perform { app.preferences.save(settings) }
-    fun favorite(value: FavoriteDrink) = perform { app.repository.saveFavorite(value); events.send(Feedback("Favorite saved")) }
-    fun removeFavorite(value: FavoriteDrink) = perform { app.repository.deleteFavorite(value.id) }
     fun clear() = perform { app.repository.clearAll(); app.preferences.save(HydroSettings()); events.send(Feedback("All local HydroNudge data deleted")) }
     fun export(uri: Uri) = perform {
         withContext(Dispatchers.IO) {
@@ -60,7 +58,7 @@ class HydroViewModel(application: Application) : AndroidViewModel(application) {
             val stream = app.contentResolver.openOutputStream(uri,"wt") ?: error("Could not open the export file.")
             stream.bufferedWriter(Charsets.UTF_8).use { it.write(json) }
         }
-        events.send(Feedback("Drink backup exported"))
+        events.send(Feedback("Backup exported, including preserved legacy records"))
     }
     fun import(uri: Uri) = perform {
         val count = withContext(Dispatchers.IO) {
@@ -79,7 +77,7 @@ class HydroViewModel(application: Application) : AndroidViewModel(application) {
             }
             app.repository.merge(BackupCodec.decode(bytes.toString(Charsets.UTF_8)))
         }
-        events.send(Feedback("Imported $count new drinks; existing records kept"))
+        events.send(Feedback("Imported $count new records; existing records kept"))
     }
     private fun perform(block: suspend () -> Unit) { viewModelScope.launch { try { block() } catch (e: CancellationException) { throw e } catch (e: Exception) { events.send(Feedback(e.message ?: "Unable to save. Please try again.")) } } }
 }

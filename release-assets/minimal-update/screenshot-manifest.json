@@ -1,0 +1,112 @@
+[
+  {
+    "file": "phone-screenshots/01-today.png",
+    "dimensions": [
+      1080,
+      1920
+    ],
+    "mode": "RGB",
+    "alt_text": "Today dashboard with staged 1250 mL of water, a 2500 mL goal and four quick-add buttons.",
+    "native_source_sha256": "77a6d289d8c0b55fadb7583531adf8365629970127e5182b2f8eb526e3f7a5f8",
+    "crop": [
+      0,
+      112,
+      1080,
+      1872
+    ],
+    "raw_crop": "raw-screenshots/01-today-app-crop.png",
+    "raw_crop_sha256": "793d7dae1877f999a917012a005558c01237137303eaf90c929b1e0120c97ef1",
+    "sha256": "65694e140f5bb559f5c470cdc801f9f36d3234e07e9bfe6a153c5241134c20ec",
+    "staged_demonstration_data": true,
+    "widget_rounded_crop_radius_source_px": null,
+    "composition": "Original captions and ocean field around a real cropped app capture; no app UI reconstructed"
+  },
+  {
+    "file": "phone-screenshots/02-quick-log.png",
+    "dimensions": [
+      1080,
+      1920
+    ],
+    "mode": "RGB",
+    "alt_text": "Actual dashboard after adding 250 mL, with 1500 mL recorded and a View all link for the four entries.",
+    "native_source_sha256": "19a7fcde86ddb775af301f1963e8b2d537916233cc5860f2b46138d0b47b1a2c",
+    "crop": [
+      0,
+      112,
+      1080,
+      1872
+    ],
+    "raw_crop": "raw-screenshots/02-quick-log-app-crop.png",
+    "raw_crop_sha256": "eb5416819cfcfc653a8df96eaeb11cb82370db952a6bf045bf073748f225d853",
+    "sha256": "ee4f41f2d32e11d556d9be2e3f7f22cb95fa25d859fcab538601fcb30dd78c7a",
+    "staged_demonstration_data": true,
+    "widget_rounded_crop_radius_source_px": null,
+    "composition": "Original captions and ocean field around a real cropped app capture; no app UI reconstructed"
+  },
+  {
+    "file": "phone-screenshots/03-history.png",
+    "dimensions": [
+      1080,
+      1920
+    ],
+    "mode": "RGB",
+    "alt_text": "Actual seven-day history, recorded-day averages and daily chart using staged water entries.",
+    "native_source_sha256": "234d3594e4cd552d7aed63d87e55150c63b3d2a3af4fb205b01560336283acf4",
+    "crop": [
+      0,
+      112,
+      1080,
+      1872
+    ],
+    "raw_crop": "raw-screenshots/03-history-app-crop.png",
+    "raw_crop_sha256": "29f0397f87e911ef0dc02034c4f8abb1dc96cb547c52817c97198994650b1a86",
+    "sha256": "aca989e092efa7fcff2d2da7f29584c06235ee0a1ead6f4fb4626eae7e4dfdba",
+    "staged_demonstration_data": true,
+    "widget_rounded_crop_radius_source_px": null,
+    "composition": "Original captions and ocean field around a real cropped app capture; no app UI reconstructed"
+  },
+  {
+    "file": "phone-screenshots/04-custom-entry.png",
+    "dimensions": [
+      1080,
+      1920
+    ],
+    "mode": "RGB",
+    "alt_text": "Actual custom water entry dialog with an unsaved 375 mL amount, date, time and optional note.",
+    "native_source_sha256": "7474fa1e7d32e379b07d4e057e5f39d85aadae3e3b8ba37b2cb302fb569dced0",
+    "crop": [
+      0,
+      112,
+      1080,
+      1872
+    ],
+    "raw_crop": "raw-screenshots/04-custom-entry-app-crop.png",
+    "raw_crop_sha256": "bfaecb306d323832a141fc338fbe153902503dd35f7179d1f9741625ac3ccc00",
+    "sha256": "1ab5776913748a0f0740f79b54d10f09b6d339e62b83199ecb290b0f963659f5",
+    "staged_demonstration_data": true,
+    "widget_rounded_crop_radius_source_px": null,
+    "composition": "Original captions and ocean field around a real cropped app capture; no app UI reconstructed"
+  },
+  {
+    "file": "phone-screenshots/05-settings.png",
+    "dimensions": [
+      1080,
+      1920
+    ],
+    "mode": "RGB",
+    "alt_text": "Actual Settings screen with daily goal, units, appearance choices and optional water reminders.",
+    "native_source_sha256": "91ccbbac43aefa27a35ed057a1841961ad4ceb6810223785c545c62c19fde914",
+    "crop": [
+      0,
+      112,
+      1080,
+      1872
+    ],
+    "raw_crop": "raw-screenshots/05-settings-app-crop.png",
+    "raw_crop_sha256": "037520a823cf92d94d2a12a11c0b12dbfa886278fffac101b994646bcd694db0",
+    "sha256": "f872a8c0aaef9db3e77db612946598d51f7953544ab4f6eb7a8cc74436a37cfb",
+    "staged_demonstration_data": true,
+    "widget_rounded_crop_radius_source_px": null,
+    "composition": "Original captions and ocean field around a real cropped app capture; no app UI reconstructed"
+  }
+]

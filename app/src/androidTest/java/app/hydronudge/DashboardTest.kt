@@ -7,11 +7,11 @@ import org.junit.Test
 
 class DashboardTest {
     @get:Rule val compose = createAndroidComposeRule<MainActivity>()
-    @Test fun dashboardAndDrinkChooserAreAccessible() {
-        compose.waitUntil(15000) { compose.onAllNodesWithText("Choose a drink").fetchSemanticsNodes().isNotEmpty() }
-        compose.onNodeWithText("Choose a drink").performScrollTo().performClick()
-        compose.onNodeWithText("Make it a sip").assertIsDisplayed()
-        compose.onNodeWithText("Milk").assertExists()
-        compose.onNodeWithText("Protein shake").assertExists()
+    @Test fun dashboardAndWaterSheetAreAccessible() {
+        compose.waitUntil(15000) { compose.onAllNodesWithText("Custom amount").fetchSemanticsNodes().isNotEmpty() }
+        compose.onNodeWithText("Custom amount").performScrollTo().performClick()
+        compose.onNodeWithTag("drink-editor").assertIsDisplayed()
+        compose.onNodeWithText("Milk").assertDoesNotExist()
+        compose.onNodeWithText("Protein shake").assertDoesNotExist()
     }
 }

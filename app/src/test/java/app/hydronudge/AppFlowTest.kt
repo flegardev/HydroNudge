@@ -23,16 +23,19 @@ class AppFlowTest {
         val folder=File("build/screenshots").apply {mkdirs()}
         File(folder,"$name.png").outputStream().use { compose.onRoot().captureToImage().asAndroidBitmap().compress(android.graphics.Bitmap.CompressFormat.PNG,100,it) }
     }
-    @Test fun launchLogDrinkChooseMilkAndSwitchToDarkTheme() {
+    @Test fun launchLogWaterCustomAmountAndSwitchToDarkTheme() {
         val app=compose.activity.application as HydroApplication
-        runBlocking { app.repository.clearAll(); app.preferences.save(HydroSettings()) }
+        runBlocking { app.repository.clearAll(); app.preferences.save(HydroSettings(goalMl=2500)) }
         compose.waitUntil(20000) { compose.onAllNodesWithText("0% completed").fetchSemanticsNodes().isNotEmpty() }
         screenshot("dashboard-light-empty")
         compose.onNodeWithText("+ 250 mL").performScrollTo().performClick()
         compose.waitUntil(10000) { compose.onAllNodesWithText("10% completed").fetchSemanticsNodes().isNotEmpty() }
-        compose.onNodeWithText("Choose a drink").performScrollTo().performClick()
-        compose.onNodeWithText("Milk").performClick()
-        compose.onNodeWithText("Save drink").performScrollTo().performClick()
+        compose.onNodeWithContentDescription("Dismiss").performClick()
+        compose.onNodeWithText("Custom amount").performScrollTo().performClick()
+        compose.waitUntil(10000) { compose.onAllNodesWithTag("drink-editor").fetchSemanticsNodes().isNotEmpty() }
+        compose.onNodeWithTag("drink-name").assertDoesNotExist()
+        compose.onNodeWithTag("category:MILK").assertDoesNotExist()
+        compose.onNodeWithText("Save water").assertIsDisplayed().performClick()
         compose.waitUntil(10000) { compose.onAllNodesWithText("20% completed").fetchSemanticsNodes().isNotEmpty() }
         compose.onAllNodesWithText("Settings").onLast().performClick()
         compose.onNode(hasScrollAction()).performScrollToNode(hasText("Dark"))
@@ -43,4 +46,5 @@ class AppFlowTest {
         screenshot("dashboard-dark-logged")
         compose.onNodeWithText("20% completed").assertExists()
     }
+
 }

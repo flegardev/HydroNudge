@@ -32,7 +32,7 @@ class HydrationTile : TileService() {
             try {
                 val settings = app.preferences.settings.first()
                 app.repository.add(DrinkEntry(name="Water",category="WATER",amountMl=settings.tileAmountMl))
-                qsTile?.apply { label="Drink added"; state=Tile.STATE_ACTIVE; updateTile() }
+                qsTile?.apply { label="Water added"; state=Tile.STATE_ACTIVE; updateTile() }
             } finally { busy.set(false) }
         }
     }

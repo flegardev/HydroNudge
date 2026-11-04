@@ -1,0 +1,5 @@
+HydroNudge 1.0.0 — closed-testing candidate
+
+Water-only logging, editable goals, history, optional reminders, widgets and Quick Settings access. Offline records and manual backups. This build introduces a simpler Home screen and settings that expand when needed.
+
+Please test the flows in PLAY_TESTER_INSTRUCTIONS.md and report what happened. Reminder timing depends on Android settings.

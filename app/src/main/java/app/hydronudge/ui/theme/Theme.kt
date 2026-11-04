@@ -16,33 +16,70 @@ import androidx.compose.ui.unit.sp
 import app.hydronudge.data.preferences.HydroSettings
 import app.hydronudge.data.preferences.ThemeMode
 
-val Ocean = Color(0xFF075B73)
-val Aqua = Color(0xFF25C5BD)
-internal val HydroLightColors = lightColorScheme(primary = Ocean, secondary = Color(0xFF006B63), tertiary = Color(0xFF466576),
-    onPrimary=Color.White, onSecondary=Color.White, onTertiary=Color.White,
-    onSurfaceVariant=Color(0xFF47636D), inverseSurface=Color(0xFF183440), inverseOnSurface=Color(0xFFE1F2F6), inversePrimary=Color(0xFF75D6E6),
-    background = Color(0xFFF3F9FB), onBackground=Color(0xFF102F3A), surface = Color(0xFFF9FDFF), surfaceVariant = Color(0xFFE1EFF2), onSurface = Color(0xFF102F3A),
-    primaryContainer=Color(0xFFD4EEF5), onPrimaryContainer=Color(0xFF063D50),
-    secondaryContainer=Color(0xFFD3F3ED), onSecondaryContainer=Color(0xFF075449),
-    tertiaryContainer=Color(0xFFDDEBF3), onTertiaryContainer=Color(0xFF253F4D),
-    surfaceContainerLowest=Color.White, surfaceContainerLow=Color(0xFFEDF6F8), surfaceContainer=Color(0xFFE7F2F5),
-    surfaceContainerHigh=Color(0xFFDFEDF1), surfaceContainerHighest=Color(0xFFD8E8ED), outline=Color(0xFF6D858D), outlineVariant=Color(0xFFBCCFD5))
-internal val HydroDarkColors = darkColorScheme(primary = Color(0xFF75D6E6), secondary = Color(0xFF6EDACE), tertiary = Color(0xFFA8CADA),
-    onPrimary=Color(0xFF003642), onSecondary=Color(0xFF003832), onTertiary=Color(0xFF153848),
-    onSurfaceVariant=Color(0xFFB6CCD4), inverseSurface=Color(0xFFD6E9F0), inverseOnSurface=Color(0xFF183440), inversePrimary=Ocean,
-    background = Color(0xFF09171E), onBackground=Color(0xFFE1F2F6), surface = Color(0xFF10232D), surfaceVariant = Color(0xFF233B45), onSurface = Color(0xFFE1F2F6),
-    primaryContainer=Color(0xFF123F50), onPrimaryContainer=Color(0xFFC4EDF5),
-    secondaryContainer=Color(0xFF1A4745), onSecondaryContainer=Color(0xFFABF3E8),
-    tertiaryContainer=Color(0xFF304956), onTertiaryContainer=Color(0xFFD3EAF5),
-    surfaceContainerLowest=Color(0xFF061218), surfaceContainerLow=Color(0xFF10232D), surfaceContainer=Color(0xFF142B36),
-    surfaceContainerHigh=Color(0xFF1D3540), surfaceContainerHighest=Color(0xFF263F49), outline=Color(0xFF87A1AA), outlineVariant=Color(0xFF3B5660))
-object Space { val small = 8.dp; val medium = 16.dp; val large = 24.dp }
+/** Ocean 3.0 brand tokens. UI consumes semantic Material colors. */
+object OceanTokens {
+    val Background = Color(0xFF061522)
+    val Deep = Color(0xFF04101B)
+    val Surface = Color(0xFF102B3C)
+    val Elevated = Color(0xFF17394A)
+    val Interactive = Color(0xFF1B4258)
+    val Aqua = Color(0xFF7EDCEB)
+    val Blue = Color(0xFF57B8F1)
+    val Turquoise = Color(0xFF80E6D9)
+    val Text = Color(0xFFF1FAFF)
+    val Secondary = Color(0xFFACC7D4)
+    val Muted = Color(0xFF829DAD)
+    val LightBackground = Color(0xFFF1F7FA)
+    val LightSurface = Color.White
+    val LightElevated = Color(0xFFE7F2F8)
+    val LightText = Color(0xFF102F42)
+    val LightSecondary = Color(0xFF55717E)
+    val LightBlue = Color(0xFF126A90)
+    val LightAqua = Color(0xFF58C4D7)
+    val LightBorder = Color(0xFFD5E8F0)
+}
+val Ocean = OceanTokens.LightBlue
+val Aqua = OceanTokens.Aqua
+internal val HydroLightColors = lightColorScheme(
+    primary=OceanTokens.LightBlue, onPrimary=Color.White,
+    secondary=OceanTokens.LightBlue, tertiary=OceanTokens.LightAqua,
+    background=OceanTokens.LightBackground, onBackground=OceanTokens.LightText,
+    surface=OceanTokens.LightSurface, onSurface=OceanTokens.LightText,
+    surfaceVariant=OceanTokens.LightElevated, onSurfaceVariant=OceanTokens.LightSecondary,
+    primaryContainer=OceanTokens.LightElevated, onPrimaryContainer=OceanTokens.LightBlue,
+    secondaryContainer=OceanTokens.LightElevated, onSecondaryContainer=OceanTokens.LightText,
+    surfaceContainerLowest=OceanTokens.LightSurface, surfaceContainerLow=OceanTokens.LightBackground,
+    surfaceContainer=OceanTokens.LightElevated, surfaceContainerHigh=OceanTokens.LightElevated,
+    surfaceContainerHighest=OceanTokens.LightBorder,
+    outline=OceanTokens.LightSecondary, outlineVariant=OceanTokens.LightBorder
+)
+internal val HydroDarkColors = darkColorScheme(
+    primary=OceanTokens.Aqua, onPrimary=OceanTokens.Deep,
+    secondary=OceanTokens.Blue, onSecondary=OceanTokens.Deep,
+    tertiary=OceanTokens.Turquoise, onTertiary=OceanTokens.Deep,
+    background=OceanTokens.Background, onBackground=OceanTokens.Text,
+    surface=OceanTokens.Surface, onSurface=OceanTokens.Text,
+    surfaceVariant=OceanTokens.Elevated, onSurfaceVariant=OceanTokens.Secondary,
+    primaryContainer=OceanTokens.Interactive, onPrimaryContainer=OceanTokens.Aqua,
+    secondaryContainer=OceanTokens.Elevated, onSecondaryContainer=OceanTokens.Text,
+    surfaceContainerLowest=OceanTokens.Deep, surfaceContainerLow=OceanTokens.Surface,
+    surfaceContainer=OceanTokens.Elevated, surfaceContainerHigh=OceanTokens.Interactive,
+    surfaceContainerHighest=OceanTokens.Interactive,
+    outline=OceanTokens.Muted, outlineVariant=OceanTokens.Elevated
+)
+object Space {
+    val base=4.dp; val small=8.dp; val gap=12.dp; val medium=16.dp
+    val page=20.dp; val large=24.dp; val major=32.dp
+}
 @Composable
 fun HydroTheme(settings: HydroSettings, content: @Composable () -> Unit) {
     val dark = when(settings.theme) { ThemeMode.SYSTEM -> isSystemInDarkTheme(); ThemeMode.DARK -> true; ThemeMode.LIGHT -> false }
     val context = LocalContext.current
     val colors = if (settings.dynamicColors && Build.VERSION.SDK_INT >= 31) {
-        if(dark) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+        // Keep the ocean action colors and adapt only the supporting surfaces.
+        val device = if(dark) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+        val brand = if(dark) HydroDarkColors else HydroLightColors
+        brand.copy(outline=device.outline, outlineVariant=device.outlineVariant)
     } else if(dark) HydroDarkColors else HydroLightColors
     SideEffect {
         (context as? android.app.Activity)?.let { activity ->
@@ -53,8 +90,9 @@ fun HydroTheme(settings: HydroSettings, content: @Composable () -> Unit) {
         }
     }
     MaterialTheme(colorScheme = colors, typography = Typography(
-        headlineLarge = TextStyle(fontWeight = FontWeight.Bold, fontSize = 32.sp, lineHeight = 40.sp),
-        headlineMedium = TextStyle(fontWeight = FontWeight.Bold, fontSize = 26.sp, lineHeight = 34.sp),
+        displayLarge = TextStyle(fontWeight = FontWeight.Light, fontSize = 48.sp, lineHeight = 56.sp, letterSpacing = (-2).sp),
+        headlineLarge = TextStyle(fontWeight = FontWeight.Medium, fontSize = 32.sp, lineHeight = 40.sp, letterSpacing = (-0.8).sp),
+        headlineMedium = TextStyle(fontWeight = FontWeight.Medium, fontSize = 26.sp, lineHeight = 34.sp),
         titleLarge = TextStyle(fontWeight = FontWeight.SemiBold, fontSize = 22.sp, lineHeight = 28.sp)
-    ), shapes = Shapes(medium = RoundedCornerShape(20.dp), large = RoundedCornerShape(28.dp)), content = content)
+    ), shapes = Shapes(extraSmall = RoundedCornerShape(16.dp), small = RoundedCornerShape(20.dp), medium = RoundedCornerShape(24.dp), large = RoundedCornerShape(28.dp), extraLarge = RoundedCornerShape(36.dp)), content = content)
 }

@@ -12,7 +12,8 @@ val Context.hydroDataStore by preferencesDataStore("hydronudge_preferences")
 enum class ThemeMode { SYSTEM, LIGHT, DARK }
 enum class ReminderStyle { GENTLE, NORMAL, FUNNY, MINIMAL }
 data class HydroSettings(
-    val goalMl: Int = 2500,
+    /** Zero means the user has not chosen a personal water goal. */
+    val goalMl: Int = 0,
     val unit: VolumeUnit = VolumeUnit.ML,
     val quickAmounts: List<Int> = listOf(150, 250, 330, 500),
     val theme: ThemeMode = ThemeMode.SYSTEM,
@@ -50,7 +51,7 @@ class HydroPreferences(private val context: Context) {
     private val tileAmount = intPreferencesKey("tile_amount_ml")
     val settings = context.hydroDataStore.data.catch { if (it is IOException) emit(emptyPreferences()) else throw it }.map { p ->
         HydroSettings(
-            goalMl = p[goal]?.takeIf { it in 100..20000 } ?: 2500,
+            goalMl = p[goal]?.takeIf { it == 0 || it in 100..20000 } ?: 0,
             unit = VolumeUnit.entries.firstOrNull { it.name == p[unit] } ?: VolumeUnit.ML,
             quickAmounts = p[quick]?.split(",")?.mapNotNull { it.toIntOrNull()?.takeIf { n -> n in 1..20000 } }?.takeIf { it.size == 4 } ?: listOf(150,250,330,500),
             theme = ThemeMode.entries.firstOrNull { it.name == p[theme] } ?: ThemeMode.SYSTEM,
@@ -70,7 +71,7 @@ class HydroPreferences(private val context: Context) {
         )
     }
     suspend fun save(value: HydroSettings) {
-        require(value.goalMl in 100..20000)
+        require(value.goalMl == 0 || value.goalMl in 100..20000)
         require(value.quickAmounts.size == 4 && value.quickAmounts.all { it in 1..20000 })
         require(value.intervalMinutes in 15..1440 && value.wakeMinute in 0..1439 && value.sleepMinute in 0..1439)
         require(value.tileAmountMl in 1..20000)

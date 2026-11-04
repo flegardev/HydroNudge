@@ -23,9 +23,9 @@ class StorageTest {
         var db = open()
         try {
             var repository = DrinkRepository(db.drinks())
-            val drink = DrinkEntry(id = "action-token",name = "Milk",category = "MILK",amountMl = 250)
+            val drink = DrinkEntry(id = "action-token",name = "Water",category = "WATER",amountMl = 250)
             assertTrue(repository.add(drink)); assertFalse(repository.add(drink))
-            repository.add(drink.copy(id = "second",name = "Coffee",category = "COFFEE",amountMl = 150))
+            repository.add(drink.copy(id = "second",name = "Water",category = "WATER",amountMl = 150))
             assertEquals(400,repository.all().sumOf { it.amountMl })
             db.close(); db = open(); repository = DrinkRepository(db.drinks())
             assertEquals(2, repository.all().size)

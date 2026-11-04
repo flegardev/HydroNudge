@@ -1,0 +1,65 @@
+{
+  "status": "Ready for owner review; no files uploaded",
+  "files": [
+    {
+      "path": "release-assets\\listing\\en-US-full-description.txt",
+      "bytes": 2333,
+      "sha256": "ca21529aa1ec99b0d96cc75357a1e080bf671a94b54bf4028a969a9527417cd8"
+    },
+    {
+      "path": "release-assets\\listing\\en-US-short-description.txt",
+      "bytes": 71,
+      "sha256": "ddc772f8ebb3db36199ba244d6920045a56aa2b756da425c784262fc8f441362"
+    },
+    {
+      "path": "release-assets\\listing\\en-US-title.txt",
+      "bytes": 12,
+      "sha256": "f3f08e19ec677d946c751d2c39bbc5e5e87735d6ac8e8c300dad57e1955d1086"
+    },
+    {
+      "path": "release-assets\\icons\\play-store-icon-512.png",
+      "bytes": 25746,
+      "sha256": "7ffe03bff0dfe2264e98b5c9c34809393b8416680e2987e41a7714cc433bb027"
+    },
+    {
+      "path": "release-assets\\feature-graphic\\hydronudge-feature-1024x500.png",
+      "bytes": 56451,
+      "sha256": "61f075251ec3ab100f94b8fb0754124007e75765cdd552c185f290f19f0ac12b"
+    },
+    {
+      "path": "release-assets\\minimal-update\\phone-screenshots\\01-today.png",
+      "bytes": 391789,
+      "sha256": "65694e140f5bb559f5c470cdc801f9f36d3234e07e9bfe6a153c5241134c20ec"
+    },
+    {
+      "path": "release-assets\\minimal-update\\phone-screenshots\\02-quick-log.png",
+      "bytes": 404410,
+      "sha256": "ee4f41f2d32e11d556d9be2e3f7f22cb95fa25d859fcab538601fcb30dd78c7a"
+    },
+    {
+      "path": "release-assets\\minimal-update\\phone-screenshots\\03-history.png",
+      "bytes": 440830,
+      "sha256": "aca989e092efa7fcff2d2da7f29584c06235ee0a1ead6f4fb4626eae7e4dfdba"
+    },
+    {
+      "path": "release-assets\\minimal-update\\phone-screenshots\\04-custom-entry.png",
+      "bytes": 268034,
+      "sha256": "1ab5776913748a0f0740f79b54d10f09b6d339e62b83199ecb290b0f963659f5"
+    },
+    {
+      "path": "release-assets\\minimal-update\\phone-screenshots\\05-settings.png",
+      "bytes": 473697,
+      "sha256": "f872a8c0aaef9db3e77db612946598d51f7953544ab4f6eb7a8cc74436a37cfb"
+    },
+    {
+      "path": "release-assets\\minimal-update\\screenshot-alt-text.csv",
+      "bytes": 674,
+      "sha256": "953f002ae5e4245f35e449058fe0a1e9e484826be2e9b0ac01f8c6acdd211480"
+    },
+    {
+      "path": "play-submission\\testing\\release-notes-en-US.txt",
+      "bytes": 395,
+      "sha256": "83960b47922a27a8a1e5aaacb9043cd8fad5d31e0e1a38766537dfb174eb035a"
+    }
+  ]
+}

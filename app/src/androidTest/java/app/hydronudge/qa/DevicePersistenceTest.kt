@@ -22,8 +22,8 @@ class DevicePersistenceSeedTest {
     @Test fun seedRestartRecordWithoutChangingExistingData() = runBlocking {
         val app=InstrumentationRegistry.getInstrumentation().targetContext.applicationContext as HydroApplication
         val date=LocalDate.now();val zone=ZoneId.systemDefault()
-        val before=app.repository.all().filter {localDay(it.timestamp,zone)==date}.sumOf {it.amountMl.toLong()}
-        val entry=DrinkEntry(id="qa-process:${UUID.randomUUID()}",name="QA restart persistence",category="CUSTOM",amountMl=123)
+        val before=app.repository.all().filter {it.isWater() && localDay(it.timestamp,zone)==date}.sumOf {it.amountMl.toLong()}
+        val entry=DrinkEntry(id="qa-process:${UUID.randomUUID()}",name="QA restart persistence",category="WATER",amountMl=123)
         app.repository.add(entry)
         File(QaArtifacts.folder,"restart-marker.json").writeText(JSONObject().put("id",entry.id).put("expectedTotal",before+123).put("date",date.toString()).toString())
         QaArtifacts.note("PASS restart seed committed to Room; original records unchanged")
@@ -43,7 +43,7 @@ class DevicePersistenceVerifyTest {
             val entry=entries.single {it.id==id}
             assertEquals(123,entry.amountMl)
             if(marker.getString("date")==LocalDate.now().toString()) {
-                val total=entries.filter {localDay(it.timestamp,ZoneId.systemDefault())==LocalDate.now()}.sumOf {it.amountMl.toLong()}
+                val total=entries.filter {it.isWater() && localDay(it.timestamp,ZoneId.systemDefault())==LocalDate.now()}.sumOf {it.amountMl.toLong()}
                 assertEquals(marker.getLong("expectedTotal"),total)
             }
             compose.waitUntil(20000) {compose.onAllNodesWithTag("dashboard-list").fetchSemanticsNodes().isNotEmpty()}

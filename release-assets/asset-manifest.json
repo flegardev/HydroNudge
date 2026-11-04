@@ -1,0 +1,498 @@
+{
+  "prepared": "2026-11-03",
+  "status": "Current local store assets for owner review; not uploaded",
+  "images": [
+    {
+      "file": "feature-graphic/hydronudge-feature-1024x500.png",
+      "dimensions": [
+        1024,
+        500
+      ],
+      "mode": "RGB",
+      "bytes": 56451,
+      "sha256": "61f075251ec3ab100f94b8fb0754124007e75765cdd552c185f290f19f0ac12b"
+    },
+    {
+      "file": "icons/adaptive-background-1080.png",
+      "dimensions": [
+        1080,
+        1080
+      ],
+      "mode": "RGB",
+      "bytes": 5357,
+      "sha256": "affa460a7cc0569c7cbb11712102a09fc42a681d79167108b21af62510199e07"
+    },
+    {
+      "file": "icons/adaptive-foreground-1080.png",
+      "dimensions": [
+        1080,
+        1080
+      ],
+      "mode": "RGBA",
+      "bytes": 63783,
+      "sha256": "61ede43d6ea8082a7921f5f93fefcfa80352609e3caa3359e42787ee58a9065e"
+    },
+    {
+      "file": "icons/launcher-hdpi-ic_launcher_round.png",
+      "dimensions": [
+        72,
+        72
+      ],
+      "mode": "RGBA",
+      "bytes": 4926,
+      "sha256": "04dcd4c92e6aa468b680443e92ca1bed1df619a81b97a5a9b350c3f6940cd67b"
+    },
+    {
+      "file": "icons/launcher-hdpi-ic_launcher.png",
+      "dimensions": [
+        72,
+        72
+      ],
+      "mode": "RGBA",
+      "bytes": 3712,
+      "sha256": "14e43e24e908022556112a7b17abcc53cd9008b7a91891e053dd218d68ecd3c1"
+    },
+    {
+      "file": "icons/launcher-mdpi-ic_launcher_round.png",
+      "dimensions": [
+        48,
+        48
+      ],
+      "mode": "RGBA",
+      "bytes": 3303,
+      "sha256": "8b802e4c8a8b0236a75fca45041b823e9a7f91156e9eeb066deb32e93f9d6b6d"
+    },
+    {
+      "file": "icons/launcher-mdpi-ic_launcher.png",
+      "dimensions": [
+        48,
+        48
+      ],
+      "mode": "RGBA",
+      "bytes": 2499,
+      "sha256": "d6d5cee2b8390f748f95740bfdb696a7f4cba7f79cc1ab125d0a7f9545358e71"
+    },
+    {
+      "file": "icons/launcher-xhdpi-ic_launcher_round.png",
+      "dimensions": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "bytes": 6716,
+      "sha256": "878f970184a7704cd363e42a0bec0fe84d5e8babfacf5d6f82cecfd00da69b0d"
+    },
+    {
+      "file": "icons/launcher-xhdpi-ic_launcher.png",
+      "dimensions": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "bytes": 4895,
+      "sha256": "21fcbdec6998ea45306ca87f8cf7f34cc011cb18088f70b95200e32c4b4dad73"
+    },
+    {
+      "file": "icons/launcher-xxhdpi-ic_launcher_round.png",
+      "dimensions": [
+        144,
+        144
+      ],
+      "mode": "RGBA",
+      "bytes": 10080,
+      "sha256": "e29c9edb46c60b0faac61c0fbb11550f2990f62222262fdf586bf4db19875ba2"
+    },
+    {
+      "file": "icons/launcher-xxhdpi-ic_launcher.png",
+      "dimensions": [
+        144,
+        144
+      ],
+      "mode": "RGBA",
+      "bytes": 7147,
+      "sha256": "bf7aaa36c509283b1aa3206519fe9beaa8b13610a3d4348816ef2a9bc6f901a0"
+    },
+    {
+      "file": "icons/launcher-xxxhdpi-ic_launcher_round.png",
+      "dimensions": [
+        192,
+        192
+      ],
+      "mode": "RGBA",
+      "bytes": 13341,
+      "sha256": "440018b5425bd1484e4d1c320e64de6665f6ecc08a9305be05419c025fee9a7f"
+    },
+    {
+      "file": "icons/launcher-xxxhdpi-ic_launcher.png",
+      "dimensions": [
+        192,
+        192
+      ],
+      "mode": "RGBA",
+      "bytes": 9512,
+      "sha256": "5fd519edc91c61ebc0dbf503732411e87e738a5949a3cf6430372d09089b403f"
+    },
+    {
+      "file": "icons/monochrome-1080.png",
+      "dimensions": [
+        1080,
+        1080
+      ],
+      "mode": "RGBA",
+      "bytes": 60877,
+      "sha256": "27b39b2d9c70cffd4edcb63930a09533057fd2c9f0dd8b4cb6c492bc12629e5c"
+    },
+    {
+      "file": "icons/play-store-icon-512.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "bytes": 25746,
+      "sha256": "7ffe03bff0dfe2264e98b5c9c34809393b8416680e2987e41a7714cc433bb027"
+    },
+    {
+      "file": "minimal-update/phone-screenshots/01-today.png",
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "mode": "RGB",
+      "bytes": 391789,
+      "sha256": "65694e140f5bb559f5c470cdc801f9f36d3234e07e9bfe6a153c5241134c20ec"
+    },
+    {
+      "file": "minimal-update/phone-screenshots/02-quick-log.png",
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "mode": "RGB",
+      "bytes": 404410,
+      "sha256": "ee4f41f2d32e11d556d9be2e3f7f22cb95fa25d859fcab538601fcb30dd78c7a"
+    },
+    {
+      "file": "minimal-update/phone-screenshots/03-history.png",
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "mode": "RGB",
+      "bytes": 440830,
+      "sha256": "aca989e092efa7fcff2d2da7f29584c06235ee0a1ead6f4fb4626eae7e4dfdba"
+    },
+    {
+      "file": "minimal-update/phone-screenshots/04-custom-entry.png",
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "mode": "RGB",
+      "bytes": 268034,
+      "sha256": "1ab5776913748a0f0740f79b54d10f09b6d339e62b83199ecb290b0f963659f5"
+    },
+    {
+      "file": "minimal-update/phone-screenshots/05-settings.png",
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "mode": "RGB",
+      "bytes": 473697,
+      "sha256": "f872a8c0aaef9db3e77db612946598d51f7953544ab4f6eb7a8cc74436a37cfb"
+    },
+    {
+      "file": "minimal-update/raw-screenshots/01-today-app-crop.png",
+      "dimensions": [
+        1080,
+        1760
+      ],
+      "mode": "RGB",
+      "bytes": 254587,
+      "sha256": "793d7dae1877f999a917012a005558c01237137303eaf90c929b1e0120c97ef1"
+    },
+    {
+      "file": "minimal-update/raw-screenshots/02-quick-log-app-crop.png",
+      "dimensions": [
+        1080,
+        1760
+      ],
+      "mode": "RGB",
+      "bytes": 262397,
+      "sha256": "eb5416819cfcfc653a8df96eaeb11cb82370db952a6bf045bf073748f225d853"
+    },
+    {
+      "file": "minimal-update/raw-screenshots/03-history-app-crop.png",
+      "dimensions": [
+        1080,
+        1760
+      ],
+      "mode": "RGB",
+      "bytes": 283187,
+      "sha256": "29f0397f87e911ef0dc02034c4f8abb1dc96cb547c52817c97198994650b1a86"
+    },
+    {
+      "file": "minimal-update/raw-screenshots/04-custom-entry-app-crop.png",
+      "dimensions": [
+        1080,
+        1760
+      ],
+      "mode": "RGB",
+      "bytes": 169715,
+      "sha256": "bfaecb306d323832a141fc338fbe153902503dd35f7179d1f9741625ac3ccc00"
+    },
+    {
+      "file": "minimal-update/raw-screenshots/05-settings-app-crop.png",
+      "dimensions": [
+        1080,
+        1760
+      ],
+      "mode": "RGB",
+      "bytes": 302627,
+      "sha256": "037520a823cf92d94d2a12a11c0b12dbfa886278fffac101b994646bcd694db0"
+    },
+    {
+      "file": "minimal-update/review/phone-contact-sheet.png",
+      "dimensions": [
+        1620,
+        650
+      ],
+      "mode": "RGB",
+      "bytes": 222614,
+      "sha256": "612eadb8ddc623f04eeb40f7b7a1131f228a301a35c51727329a7f6934ade9fc"
+    }
+  ],
+  "files": [
+    {
+      "file": "feature-graphic/hydronudge-feature-1024x500.png",
+      "bytes": 56451,
+      "sha256": "61f075251ec3ab100f94b8fb0754124007e75765cdd552c185f290f19f0ac12b"
+    },
+    {
+      "file": "icons/adaptive-background-1080.png",
+      "bytes": 5357,
+      "sha256": "affa460a7cc0569c7cbb11712102a09fc42a681d79167108b21af62510199e07"
+    },
+    {
+      "file": "icons/adaptive-foreground-1080.png",
+      "bytes": 63783,
+      "sha256": "61ede43d6ea8082a7921f5f93fefcfa80352609e3caa3359e42787ee58a9065e"
+    },
+    {
+      "file": "icons/launcher-hdpi-ic_launcher_round.png",
+      "bytes": 4926,
+      "sha256": "04dcd4c92e6aa468b680443e92ca1bed1df619a81b97a5a9b350c3f6940cd67b"
+    },
+    {
+      "file": "icons/launcher-hdpi-ic_launcher.png",
+      "bytes": 3712,
+      "sha256": "14e43e24e908022556112a7b17abcc53cd9008b7a91891e053dd218d68ecd3c1"
+    },
+    {
+      "file": "icons/launcher-mdpi-ic_launcher_round.png",
+      "bytes": 3303,
+      "sha256": "8b802e4c8a8b0236a75fca45041b823e9a7f91156e9eeb066deb32e93f9d6b6d"
+    },
+    {
+      "file": "icons/launcher-mdpi-ic_launcher.png",
+      "bytes": 2499,
+      "sha256": "d6d5cee2b8390f748f95740bfdb696a7f4cba7f79cc1ab125d0a7f9545358e71"
+    },
+    {
+      "file": "icons/launcher-xhdpi-ic_launcher_round.png",
+      "bytes": 6716,
+      "sha256": "878f970184a7704cd363e42a0bec0fe84d5e8babfacf5d6f82cecfd00da69b0d"
+    },
+    {
+      "file": "icons/launcher-xhdpi-ic_launcher.png",
+      "bytes": 4895,
+      "sha256": "21fcbdec6998ea45306ca87f8cf7f34cc011cb18088f70b95200e32c4b4dad73"
+    },
+    {
+      "file": "icons/launcher-xxhdpi-ic_launcher_round.png",
+      "bytes": 10080,
+      "sha256": "e29c9edb46c60b0faac61c0fbb11550f2990f62222262fdf586bf4db19875ba2"
+    },
+    {
+      "file": "icons/launcher-xxhdpi-ic_launcher.png",
+      "bytes": 7147,
+      "sha256": "bf7aaa36c509283b1aa3206519fe9beaa8b13610a3d4348816ef2a9bc6f901a0"
+    },
+    {
+      "file": "icons/launcher-xxxhdpi-ic_launcher_round.png",
+      "bytes": 13341,
+      "sha256": "440018b5425bd1484e4d1c320e64de6665f6ecc08a9305be05419c025fee9a7f"
+    },
+    {
+      "file": "icons/launcher-xxxhdpi-ic_launcher.png",
+      "bytes": 9512,
+      "sha256": "5fd519edc91c61ebc0dbf503732411e87e738a5949a3cf6430372d09089b403f"
+    },
+    {
+      "file": "icons/monochrome-1080.png",
+      "bytes": 60877,
+      "sha256": "27b39b2d9c70cffd4edcb63930a09533057fd2c9f0dd8b4cb6c492bc12629e5c"
+    },
+    {
+      "file": "icons/play-store-icon-512.png",
+      "bytes": 25746,
+      "sha256": "7ffe03bff0dfe2264e98b5c9c34809393b8416680e2987e41a7714cc433bb027"
+    },
+    {
+      "file": "listing/asset-alt-text.txt",
+      "bytes": 181,
+      "sha256": "2a0d910d9e239bb54f7765f21862f37d5634a7d70e720156621f5b14ecc25ed2"
+    },
+    {
+      "file": "listing/en-US-full-description.txt",
+      "bytes": 2556,
+      "sha256": "f6a9bb7e735dad5ee51eefe7b28ccf0ab1f623572d997924443db917020826e6"
+    },
+    {
+      "file": "listing/en-US-short-description.txt",
+      "bytes": 76,
+      "sha256": "0e0d18605013829e357272e7aee87ace3dfb8b47b9414f435e82078b34dd38e7"
+    },
+    {
+      "file": "listing/en-US-title.txt",
+      "bytes": 12,
+      "sha256": "f3f08e19ec677d946c751d2c39bbc5e5e87735d6ac8e8c300dad57e1955d1086"
+    },
+    {
+      "file": "listing/screenshot-alt-text.csv",
+      "bytes": 716,
+      "sha256": "2cf3410476204e904eb28ab89250cef374890fc5084a96bcfc4035ede54e54f0"
+    },
+    {
+      "file": "minimal-update/REVIEW.html",
+      "bytes": 1362,
+      "sha256": "54708b4b7507b1a1ce75a9c9ab18c9b6cae77bf4801862add6b5ad735b70d72a"
+    },
+    {
+      "file": "minimal-update/screenshot-alt-text.csv",
+      "bytes": 674,
+      "sha256": "953f002ae5e4245f35e449058fe0a1e9e484826be2e9b0ac01f8c6acdd211480"
+    },
+    {
+      "file": "minimal-update/screenshot-manifest.json",
+      "bytes": 4298,
+      "sha256": "24a69d42dcda32534c420bdf42c456b47cfaeb33b0ee28a3f544bf04aba1f340"
+    },
+    {
+      "file": "minimal-update/phone-screenshots/01-today.png",
+      "bytes": 391789,
+      "sha256": "65694e140f5bb559f5c470cdc801f9f36d3234e07e9bfe6a153c5241134c20ec"
+    },
+    {
+      "file": "minimal-update/phone-screenshots/02-quick-log.png",
+      "bytes": 404410,
+      "sha256": "ee4f41f2d32e11d556d9be2e3f7f22cb95fa25d859fcab538601fcb30dd78c7a"
+    },
+    {
+      "file": "minimal-update/phone-screenshots/03-history.png",
+      "bytes": 440830,
+      "sha256": "aca989e092efa7fcff2d2da7f29584c06235ee0a1ead6f4fb4626eae7e4dfdba"
+    },
+    {
+      "file": "minimal-update/phone-screenshots/04-custom-entry.png",
+      "bytes": 268034,
+      "sha256": "1ab5776913748a0f0740f79b54d10f09b6d339e62b83199ecb290b0f963659f5"
+    },
+    {
+      "file": "minimal-update/phone-screenshots/05-settings.png",
+      "bytes": 473697,
+      "sha256": "f872a8c0aaef9db3e77db612946598d51f7953544ab4f6eb7a8cc74436a37cfb"
+    },
+    {
+      "file": "minimal-update/raw-screenshots/01-today-app-crop.png",
+      "bytes": 254587,
+      "sha256": "793d7dae1877f999a917012a005558c01237137303eaf90c929b1e0120c97ef1"
+    },
+    {
+      "file": "minimal-update/raw-screenshots/02-quick-log-app-crop.png",
+      "bytes": 262397,
+      "sha256": "eb5416819cfcfc653a8df96eaeb11cb82370db952a6bf045bf073748f225d853"
+    },
+    {
+      "file": "minimal-update/raw-screenshots/03-history-app-crop.png",
+      "bytes": 283187,
+      "sha256": "29f0397f87e911ef0dc02034c4f8abb1dc96cb547c52817c97198994650b1a86"
+    },
+    {
+      "file": "minimal-update/raw-screenshots/04-custom-entry-app-crop.png",
+      "bytes": 169715,
+      "sha256": "bfaecb306d323832a141fc338fbe153902503dd35f7179d1f9741625ac3ccc00"
+    },
+    {
+      "file": "minimal-update/raw-screenshots/05-settings-app-crop.png",
+      "bytes": 302627,
+      "sha256": "037520a823cf92d94d2a12a11c0b12dbfa886278fffac101b994646bcd694db0"
+    },
+    {
+      "file": "minimal-update/review/phone-contact-sheet.png",
+      "bytes": 222614,
+      "sha256": "612eadb8ddc623f04eeb40f7b7a1131f228a301a35c51727329a7f6934ade9fc"
+    },
+    {
+      "file": "source/brand-geometry.json",
+      "bytes": 564,
+      "sha256": "ee81fecbf4a89e4909355f5c158a4d6c8e4438051c819107edbd1244c017200a"
+    },
+    {
+      "file": "source/capture-provenance.md",
+      "bytes": 887,
+      "sha256": "371b099f7e657ad697db22b65abb51c708898630b5de4ad5c9c370a91245afbe"
+    },
+    {
+      "file": "source/compose_minimal_screenshots.py",
+      "bytes": 5472,
+      "sha256": "9aeafe28b8847497eb2554a2c101b10faf24ac57c2793698ca526c19fd023a9e"
+    },
+    {
+      "file": "source/demonstration-data-spec.json",
+      "bytes": 505,
+      "sha256": "a17a88318b8765f823c6a50cd4ba86f18bf05a4c510cd17f2c1d23cad595a200"
+    },
+    {
+      "file": "source/export_branding.py",
+      "bytes": 7472,
+      "sha256": "c80261b47087ae8bb689b5fe2656e2253202354720198636900f24f25bb4b42e"
+    },
+    {
+      "file": "source/feature-graphic.svg",
+      "bytes": 927,
+      "sha256": "d17138684b3d9e2cc4d6128b404eb37648c6c42a20b36c1eaf6e48d4f42ccdf8"
+    },
+    {
+      "file": "source/hydronudge-icon.svg",
+      "bytes": 510,
+      "sha256": "55fd114a2690516348b2c7e758f1c9127579d5ac17275c456d15c2df77b493c7"
+    },
+    {
+      "file": "source/hydronudge-mark.svg",
+      "bytes": 463,
+      "sha256": "fc0820e28ca62f19268c1ec110e0456ee55ad488ef00d9bab4f1d43271f0db44"
+    },
+    {
+      "file": "source/hydronudge-monochrome.svg",
+      "bytes": 463,
+      "sha256": "070be19cf1e63509ecfbcceeeac041112f0baeac08674174f08ef2513bb43f19"
+    },
+    {
+      "file": "source/listing-length-validation.json",
+      "bytes": 106,
+      "sha256": "a115c95e4bd559e9c593d7dca5cc9263b5187026ece9389a714fb0f03789382d"
+    },
+    {
+      "file": "source/requirements-assets.txt",
+      "bytes": 32,
+      "sha256": "982e82227e3c14c32e8190e6cb674f2f37cd0459bbc58f5a37e76f81f3a369d9"
+    },
+    {
+      "file": "source/sRGB.icc",
+      "bytes": 588,
+      "sha256": "feafec67e6c8062c2e1325424b3f93e0c408aa0591253813e08b5dfa1b98c107"
+    }
+  ]
+}

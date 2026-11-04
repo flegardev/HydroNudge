@@ -15,8 +15,8 @@ class ReminderWorker(context: Context, params: WorkerParameters) : CoroutineWork
         val entries = app.repository.all()
         val now = ZonedDateTime.now()
         val day = dayWindow(now.toLocalDate(),now.zone)
-        val total = entries.filter { it.timestamp >= day.start && it.timestamp < day.endExclusive }.sumOf { it.amountMl.toLong() }
-        if(ReminderPolicy.shouldRemind(settings,now,total,entries.filter { it.timestamp <= now.toInstant().toEpochMilli() }.maxOfOrNull { it.timestamp }))
+        val total = entries.filter { it.isWater() && it.timestamp >= day.start && it.timestamp < day.endExclusive }.sumOf { it.amountMl.toLong() }
+        if(ReminderPolicy.shouldRemind(settings,now,total,entries.filter { it.isWater() && it.timestamp <= now.toInstant().toEpochMilli() }.maxOfOrNull { it.timestamp }))
             HydroNotifications(app).remind(settings,ReminderPolicy.message(settings.style,goalPercent(total,settings.goalMl)))
         return Result.success()
     }

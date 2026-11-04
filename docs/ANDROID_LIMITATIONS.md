@@ -8,7 +8,7 @@ References reviewed 2026-10-31:
 
 Closing a task from Recents differs from Android Settings → Force stop. Force stop prevents scheduled background work until the user launches/interacts with the app again. Reboot recovery uses WorkManager and widget host behavior, not a permanently running process.
 
-Optional status notifications, lock-screen visibility under user control, scheduled reminders, widgets and Quick Settings tile are intended alternatives. Their status is in IMPLEMENTATION.md. No foreground service is needed for a status notification.
+Optional status notifications, lock-screen visibility under user control, scheduled reminders, widgets and Quick Settings tile are intended alternatives. No foreground service is needed for a status notification.
 
 Status dismissal is remembered locally. Background refresh does not re-post a status that the user dismissed. Settings → Show status again restores it. Permission/channel controls and lock-screen visibility remain under Android’s control.
 

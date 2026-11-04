@@ -7,14 +7,15 @@ class DrinkRepository(private val dao: DrinkDao, private val onChanged: suspend 
     val entries = dao.observeAll()
     val favorites = dao.observeFavorites()
     suspend fun add(entry: DrinkEntry): Boolean {
+        require(entry.isWater()) { "New entries must be water." }
         validate(entry)
         val inserted = dao.insert(entry) != -1L
         if(inserted) onChanged()
         return inserted
     }
-    suspend fun edit(entry: DrinkEntry) { validate(entry); check(dao.update(entry) == 1) { "This drink no longer exists." }; onChanged() }
+    suspend fun edit(entry: DrinkEntry) { require(entry.isWater()); validate(entry); check(dao.update(entry) == 1) { "This drink no longer exists." }; onChanged() }
     suspend fun delete(id: String) { dao.delete(id); onChanged() }
-    suspend fun restore(entry: DrinkEntry) = add(entry)
+    suspend fun restore(entry: DrinkEntry): Boolean { validate(entry); val inserted = dao.insert(entry) != -1L; if (inserted) onChanged(); return inserted }
     suspend fun all() = dao.all()
     suspend fun deleteAll() { dao.deleteAll(); onChanged() }
     suspend fun saveFavorite(favorite: FavoriteDrink) {
@@ -35,7 +36,7 @@ class DrinkRepository(private val dao: DrinkDao, private val onChanged: suspend 
         validateVolume(favorite.amountMl)
         require(favorite.name.isNotBlank() && favorite.name.length <= 80)
         require(favorite.id.isNotBlank() && favorite.id.length <= 300)
-        DrinkCategory.valueOf(favorite.category)
+        require(favorite.category.isNotBlank() && favorite.category.length <= 80)
     }
     private fun validate(entry: DrinkEntry) {
         validateVolume(entry.amountMl)
@@ -43,7 +44,7 @@ class DrinkRepository(private val dao: DrinkDao, private val onChanged: suspend 
         require(entry.timestamp >= 0 && entry.timestamp <= System.currentTimeMillis()+60000) { "Invalid drink timestamp." }
         require(entry.name.isNotBlank() && entry.name.length <= 80) { "Use a drink name of 1–80 characters." }
         require(entry.note.length <= 1000) { "Notes may contain up to 1,000 characters." }
-        DrinkCategory.valueOf(entry.category)
+        require(entry.category.isNotBlank() && entry.category.length <= 80)
         VolumeUnit.valueOf(entry.enteredUnit)
     }
 }

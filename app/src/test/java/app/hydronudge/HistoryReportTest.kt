@@ -12,8 +12,8 @@ class HistoryReportTest {
         fun entry(id: String,date: LocalDate,ml: Int,category: String)=DrinkEntry(id,category,category,ml,date.atStartOfDay(zone).toInstant().toEpochMilli())
         val records=listOf(entry("a",start,250,"COFFEE"),entry("b",start.plusDays(1),2000,"MILK"),entry("c",start.plusDays(1),500,"WATER"),entry("outside",start.plusDays(7),500,"WATER"))
         val report=historyReport(records,start,start.plusDays(6),zone,2500)
-        assertEquals(2750L,report.totalMl); assertEquals(2,report.recordedDays); assertEquals(1375L,report.averageRecordedDayMl)
-        assertEquals(1,report.goalDays); assertEquals(listOf(250L,2500L,0L,0L,0L,0L,0L),report.dailyMl)
-        assertEquals(2000L,report.categoryMl["MILK"])
+        assertEquals(500L,report.totalMl); assertEquals(1,report.recordedDays); assertEquals(500L,report.averageRecordedDayMl)
+        assertEquals(0,report.goalDays); assertEquals(listOf(0L,500L,0L,0L,0L,0L,0L),report.dailyMl)
+        assertTrue(report.entries.all { it.isWater() })
     }
 }

@@ -13,13 +13,13 @@ object ReminderPolicy {
         val nowMs = now.toInstant().toEpochMilli()
         return settings.reminders && nowMs >= settings.pausedUntil &&
             withinWakingHours(now.hour*60+now.minute,settings.wakeMinute,settings.sleepMinute) &&
-            (!settings.skipAtGoal || totalMl < settings.goalMl) &&
+            (!settings.skipAtGoal || settings.goalMl <= 0 || totalMl < settings.goalMl) &&
             (lastDrink == null || nowMs - lastDrink >= settings.intervalMinutes * 60000L)
     }
     fun message(style: ReminderStyle, percent: Long): String = when(style) {
-        ReminderStyle.GENTLE -> "A gentle check-in. Fancy a sip?"
-        ReminderStyle.NORMAL -> "Hydration check! You’re at $percent% of your goal today."
-        ReminderStyle.FUNNY -> "Your drink is waiting. It has no other plans."
-        ReminderStyle.MINIMAL -> "Time for a drink?"
+        ReminderStyle.GENTLE -> "HydroNudge check-in. Drink if you feel thirsty."
+        ReminderStyle.NORMAL -> "HydroNudge check-in. Your water log is here if you want it."
+        ReminderStyle.FUNNY -> "A quiet HydroNudge check-in. No need to log anything."
+        ReminderStyle.MINIMAL -> "Optional water check-in"
     }
 }
